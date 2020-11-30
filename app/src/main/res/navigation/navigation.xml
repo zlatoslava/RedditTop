@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/topPostsFragment">
+
+    <fragment
+        android:id="@+id/topPostsFragment"
+        android:name="com.example.reddittop.ui.main.TopPostsFragment"
+        android:label="TopPostsFragment"
+        tools:layout="@layout/top_posts_fragment">
+        <action
+            android:id="@+id/action_topPostsFragment_to_postImageFragment"
+            app:destination="@id/postImageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/postImageFragment"
+        android:name="com.example.reddittop.ui.postimage.PostImageFragment"
+        android:label="PostImageFragment"
+        tools:layout="@layout/fragment_post_image"/>
+
+</navigation>
