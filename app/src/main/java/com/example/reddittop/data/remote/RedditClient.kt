@@ -6,18 +6,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RedditClient {
     companion object {
         private const val BASE_URL = "https://www.reddit.com/"
-        private var retrofit: Retrofit? = null
+        private var retrofit: RetrofitService? = null
 
-        fun getClient(): Retrofit {
+        fun getRetrofitService(): RetrofitService {
             when (retrofit) {
                 null -> retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(
                         GsonConverterFactory.create()
                     )
-                    .build()
+                    .build().create(RetrofitService::class.java)
             }
-            return retrofit as Retrofit
+            return retrofit as RetrofitService
         }
     }
 }

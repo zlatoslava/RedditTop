@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reddittop.R
 import com.example.reddittop.databinding.TopPostsFragmentBinding
@@ -29,6 +30,7 @@ class TopPostsFragment : Fragment() {
         adapter  = TopPostsAdapter()
 
         initViews()
+        initObservers()
 
         return binding.root
     }
@@ -36,6 +38,14 @@ class TopPostsFragment : Fragment() {
     private fun initViews() {
         binding.topPostsRecyclerView.layoutManager = LinearLayoutManager(activity)
         binding.topPostsRecyclerView.adapter = adapter
+    }
+
+    private fun initObservers() {
+        viewModel.posts.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
     }
 
 }
