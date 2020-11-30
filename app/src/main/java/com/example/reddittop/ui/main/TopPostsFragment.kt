@@ -7,27 +7,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reddittop.R
 import com.example.reddittop.databinding.TopPostsFragmentBinding
 
 class TopPostsFragment : Fragment() {
 
+    private lateinit var binding: TopPostsFragmentBinding
     private lateinit var viewModel: TopPostsViewModel
+    private lateinit var adapter: TopPostsAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val binding:TopPostsFragmentBinding = DataBindingUtil.inflate(
+
+        binding= DataBindingUtil.inflate(
             inflater, R.layout.top_posts_fragment, container, false
         )
+
+        viewModel = ViewModelProvider(this).get(TopPostsViewModel::class.java)
+
+        adapter  = TopPostsAdapter()
+
+        initViews()
+
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TopPostsViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun initViews() {
+        binding.topPostsRecyclerView.layoutManager = LinearLayoutManager(activity)
+        binding.topPostsRecyclerView.adapter = adapter
     }
 
 }
