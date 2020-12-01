@@ -8,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reddittop.R
 import com.example.reddittop.databinding.TopPostsFragmentBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class TopPostsFragment : Fragment() {
@@ -37,7 +37,7 @@ class TopPostsFragment : Fragment() {
         })
 
         initViews()
-        initObservers()
+        fetchPosts()
 
         return binding.root
     }
@@ -47,14 +47,13 @@ class TopPostsFragment : Fragment() {
         binding.topPostsRecyclerView.adapter = adapter
     }
 
-    private fun initObservers() {
-        viewModel.posts.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                lifecycleScope.launch {
-                    adapter.submitData(it)
-                }
+    private fun fetchPosts() {
+        lifecycleScope.launch{
+            viewModel._posts.collectLatest {
+                Log.d("mtag", "collect Latest ")
+                adapter.submitData(it)
             }
-        })
+        }
     }
 
 }

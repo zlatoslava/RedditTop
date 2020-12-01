@@ -14,9 +14,8 @@ class RedditPagingSource(private val service: RetrofitService) :
 
     override suspend fun load(params: LoadParams<String>): LoadResult<String, RedditPost> {
         return try {
-            val response = service.fetchPosts(loadSize = params.loadSize)
+            val response = service.fetchPosts(loadSize = params.loadSize, after = params.key)
             val listing = response.body()?.data
-
             val redditPosts = listing?.children?.map { it.data }    //transforming list of RedditPostContainer into RedditPost
             LoadResult.Page(
                 redditPosts ?: listOf(),
