@@ -8,7 +8,7 @@ import com.example.reddittop.data.remote.RedditClient
 
 class TopPostsViewModel : ViewModel() {
 
-     val _posts = Pager(PagingConfig(
+     val posts = Pager(PagingConfig(
         pageSize = 10, enablePlaceholders = false)) {
         RedditPagingSource(RedditClient.getRetrofitService())
     }.flow.cachedIn(viewModelScope)

@@ -44,13 +44,14 @@ class TopPostsFragment : Fragment() {
 
     private fun initViews() {
         binding.topPostsRecyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.topPostsRecyclerView.adapter = adapter
+        binding.topPostsRecyclerView.adapter = adapter.withLoadStateFooter(
+            footer = LoadStateAdapter { adapter.retry()}
+        )
     }
 
     private fun fetchPosts() {
         lifecycleScope.launch{
-            viewModel._posts.collectLatest {
-                Log.d("mtag", "collect Latest ")
+            viewModel.posts.collectLatest {
                 adapter.submitData(it)
             }
         }
