@@ -5,11 +5,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.example.reddittop.R
 
 @BindingAdapter("postImage")
 fun ImageView.setPostImage(thumbnailUrl: String) {
     Glide.with(this.context)
         .load(thumbnailUrl)
+        .placeholder(R.drawable.image_placeholder)
+        .error(R.drawable.image_broken)
         .centerCrop()
         .into(this)
 }

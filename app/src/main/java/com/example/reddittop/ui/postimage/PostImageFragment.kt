@@ -23,7 +23,7 @@ class PostImageFragment : Fragment() {
             inflater, R.layout.fragment_post_image, container, false
         )
 
-        loadImage(arguments?.getString("imageUrl") ?: "something") //TODO: change
+        loadImage(arguments?.getString("imageUrl"))
 
         return binding.root
     }
@@ -31,6 +31,8 @@ class PostImageFragment : Fragment() {
     private fun loadImage(imageUrl: String?) {
         Glide.with(this)
             .load(imageUrl)
+            .placeholder(R.drawable.image_placeholder)
+            .error(R.drawable.image_broken)
             .into(binding.postBigImageView)
     }
 
