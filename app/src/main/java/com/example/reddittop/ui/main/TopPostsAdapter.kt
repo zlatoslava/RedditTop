@@ -2,6 +2,7 @@ package com.example.reddittop.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,8 @@ import com.example.reddittop.data.model.RedditPost
 import com.example.reddittop.data.model.RedditPostContainer
 import com.example.reddittop.databinding.ListItemPostBinding
 
-class TopPostsAdapter(val clickListener: OnPostClickListener) : ListAdapter<RedditPostContainer, TopPostsAdapter.ViewHolder>(TopPostsDiffCallback()){
+class TopPostsAdapter(val clickListener: OnPostClickListener) :
+    PagingDataAdapter<RedditPost, TopPostsAdapter.ViewHolder>(TopPostsDiffCallback()){
 
     class ViewHolder (val binding: ListItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -22,17 +24,19 @@ class TopPostsAdapter(val clickListener: OnPostClickListener) : ListAdapter<Redd
         }
 
         fun bind(
-            post: RedditPostContainer,
+            post: RedditPost,
             clickListener: OnPostClickListener
         ) {
-            binding.post = post.data
+            binding.post = post
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position), clickListener) //TODO: getItem(position)!! check
+        getItem(position)?.let {
+            holder.bind(it, clickListener)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,13 +44,13 @@ class TopPostsAdapter(val clickListener: OnPostClickListener) : ListAdapter<Redd
     }
 }
 
-class TopPostsDiffCallback : DiffUtil.ItemCallback<RedditPostContainer>() {
+class TopPostsDiffCallback : DiffUtil.ItemCallback<RedditPost>() {
 
-    override fun areItemsTheSame(oldItem: RedditPostContainer, newItem: RedditPostContainer): Boolean {
-        return oldItem.data.id == newItem.data.id
+    override fun areItemsTheSame(oldItem: RedditPost, newItem: RedditPost): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: RedditPostContainer, newItem: RedditPostContainer): Boolean {
+    override fun areContentsTheSame(oldItem: RedditPost, newItem: RedditPost): Boolean {
         return oldItem == newItem
     }
 }
