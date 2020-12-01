@@ -5,7 +5,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import java.util.*
 
 @BindingAdapter("postImage")
 fun ImageView.setPostImage(thumbnailUrl: String) {

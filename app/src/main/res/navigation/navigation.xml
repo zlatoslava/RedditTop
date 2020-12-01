@@ -19,6 +19,10 @@
         android:id="@+id/postImageFragment"
         android:name="com.example.reddittop.ui.postimage.PostImageFragment"
         android:label="PostImageFragment"
-        tools:layout="@layout/fragment_post_image"/>
+        tools:layout="@layout/fragment_post_image">
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

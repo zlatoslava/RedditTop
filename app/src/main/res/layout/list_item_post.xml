@@ -7,7 +7,9 @@
         <variable
             name="post"
             type="com.example.reddittop.data.model.RedditPost" />
-
+        <variable
+            name="clickListener"
+            type="com.example.reddittop.ui.main.OnPostClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:postImage="@{post.thumbnailUrl}"
+            android:onClick="@{() -> clickListener.onClick(post)}"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView

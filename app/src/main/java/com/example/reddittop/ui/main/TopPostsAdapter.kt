@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.reddittop.data.model.RedditPost
 import com.example.reddittop.data.model.RedditPostContainer
 import com.example.reddittop.databinding.ListItemPostBinding
 
-class TopPostsAdapter : ListAdapter<RedditPostContainer, TopPostsAdapter.ViewHolder>(TopPostsDiffCallback()){
+class TopPostsAdapter(val clickListener: OnPostClickListener) : ListAdapter<RedditPostContainer, TopPostsAdapter.ViewHolder>(TopPostsDiffCallback()){
 
     class ViewHolder (val binding: ListItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -20,14 +21,18 @@ class TopPostsAdapter : ListAdapter<RedditPostContainer, TopPostsAdapter.ViewHol
             }
         }
 
-        fun bind(post: RedditPostContainer) {
+        fun bind(
+            post: RedditPostContainer,
+            clickListener: OnPostClickListener
+        ) {
             binding.post = post.data
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position)) //TODO: getItem(position)!! check
+        holder.bind(getItem(position), clickListener) //TODO: getItem(position)!! check
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,4 +49,8 @@ class TopPostsDiffCallback : DiffUtil.ItemCallback<RedditPostContainer>() {
     override fun areContentsTheSame(oldItem: RedditPostContainer, newItem: RedditPostContainer): Boolean {
         return oldItem == newItem
     }
+}
+
+class OnPostClickListener(val clickListener: (imageUrl: String) -> Unit) {
+    fun onClick(post: RedditPost) = clickListener(post.thumbnailUrl)
 }
