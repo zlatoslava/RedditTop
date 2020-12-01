@@ -25,6 +25,8 @@ data class RedditPost (
     val date: Long,
     @SerializedName("thumbnail")
     val thumbnailUrl: String,
+    @SerializedName("url_overridden_by_dest")
+    val bigImageUrl: String,
     @SerializedName("num_comments")
     val commentCount: Int
 )

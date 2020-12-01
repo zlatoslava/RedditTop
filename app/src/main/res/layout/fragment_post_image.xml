@@ -8,10 +8,10 @@
         tools:context=".ui.postimage.PostImageFragment">
 
 
-        <TextView
+        <ImageView
+            android:id="@+id/postBigImageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="match_parent" />
 
     </FrameLayout>
 </layout>

@@ -52,5 +52,5 @@ class TopPostsDiffCallback : DiffUtil.ItemCallback<RedditPostContainer>() {
 }
 
 class OnPostClickListener(val clickListener: (imageUrl: String) -> Unit) {
-    fun onClick(post: RedditPost) = clickListener(post.thumbnailUrl)
+    fun onClick(post: RedditPost) = clickListener(post.bigImageUrl)
 }
