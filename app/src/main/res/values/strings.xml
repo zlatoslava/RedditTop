@@ -3,4 +3,14 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_retry">Retry</string>
+    <string name="text_save_image">Save image</string>
+
+    <string name="permission_required">Permission required</string>
+    <string name="permission_explaining">Permission required to save photo into storage on your phone</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="failed_download">Download has been failed, please try again</string>
+    <string name="downloading">Downloading…</string>
+    <string name="image_downloaded">Image downloaded successfully in </string>
+    <string name="nothing_to_download">There\'s nothing to download </string>
 </resources>
