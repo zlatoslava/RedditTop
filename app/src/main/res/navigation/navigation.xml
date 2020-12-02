@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/topPostsFragment"
         android:name="com.example.reddittop.ui.main.TopPostsFragment"
-        android:label="TopPostsFragment"
+        android:label="Top posts Reddit"
         tools:layout="@layout/top_posts_fragment">
         <action
             android:id="@+id/action_topPostsFragment_to_postImageFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/postImageFragment"
         android:name="com.example.reddittop.ui.postimage.PostImageFragment"
-        android:label="PostImageFragment"
+        android:label="Image"
         tools:layout="@layout/fragment_post_image">
         <argument
             android:name="imageUrl"
