@@ -12,7 +12,9 @@
         tools:layout="@layout/top_posts_fragment">
         <action
             android:id="@+id/action_topPostsFragment_to_postImageFragment"
-            app:destination="@id/postImageFragment" />
+            app:destination="@id/postImageFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
