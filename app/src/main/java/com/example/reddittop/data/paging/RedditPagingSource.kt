@@ -1,6 +1,5 @@
 package com.example.reddittop.data.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
 import com.example.reddittop.data.model.RedditPost
 import com.example.reddittop.data.remote.RetrofitService

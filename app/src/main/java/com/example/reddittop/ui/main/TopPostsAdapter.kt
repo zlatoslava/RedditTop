@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reddittop.data.model.RedditPost
-import com.example.reddittop.data.model.RedditPostContainer
 import com.example.reddittop.databinding.ListItemPostBinding
 
 class TopPostsAdapter(val clickListener: OnPostClickListener) :
