@@ -1,4 +1,4 @@
-package com.example.reddittop.ui.postimage
+package com.example.reddittop.ui.postImage
 
 import android.Manifest
 import android.app.AlertDialog

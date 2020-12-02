@@ -1,4 +1,4 @@
-package com.example.reddittop.ui.main
+package com.example.reddittop.ui.topPosts
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -15,6 +15,9 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reddittop.R
 import com.example.reddittop.databinding.TopPostsFragmentBinding
+import com.example.reddittop.ui.topPosts.adapters.LoadStateAdapter
+import com.example.reddittop.ui.topPosts.adapters.OnPostClickListener
+import com.example.reddittop.ui.topPosts.adapters.TopPostsAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -34,14 +37,15 @@ class TopPostsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(TopPostsViewModel::class.java)
 
-        adapter = TopPostsAdapter(OnPostClickListener {
-            if (it != null)
-                findNavController().navigate(
-                    TopPostsFragmentDirections.actionTopPostsFragmentToPostImageFragment(
-                        it
+        adapter = TopPostsAdapter(
+            OnPostClickListener {
+                if (it != null)
+                    findNavController().navigate(
+                        TopPostsFragmentDirections.actionTopPostsFragmentToPostImageFragment(
+                            it
+                        )
                     )
-                )
-        })
+            })
 
         initViews()
         fetchPosts()

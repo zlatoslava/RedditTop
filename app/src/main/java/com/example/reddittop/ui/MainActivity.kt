@@ -1,4 +1,4 @@
-package com.example.reddittop.ui.main
+package com.example.reddittop.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

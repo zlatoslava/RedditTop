@@ -1,4 +1,4 @@
-package com.example.reddittop.ui.main
+package com.example.reddittop.ui.topPosts.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,9 @@ import com.example.reddittop.data.model.RedditPost
 import com.example.reddittop.databinding.ListItemPostBinding
 
 class TopPostsAdapter(val clickListener: OnPostClickListener) :
-    PagingDataAdapter<RedditPost, TopPostsAdapter.ViewHolder>(TopPostsDiffCallback()){
+    PagingDataAdapter<RedditPost, TopPostsAdapter.ViewHolder>(
+        TopPostsDiffCallback()
+    ){
 
     class ViewHolder (val binding: ListItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -17,7 +19,9 @@ class TopPostsAdapter(val clickListener: OnPostClickListener) :
             fun from(parent: ViewGroup) : ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ListItemPostBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
+                return ViewHolder(
+                    binding
+                )
             }
         }
 
@@ -38,7 +42,9 @@ class TopPostsAdapter(val clickListener: OnPostClickListener) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(
+            parent
+        )
     }
 }
 

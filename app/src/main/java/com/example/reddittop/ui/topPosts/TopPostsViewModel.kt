@@ -1,4 +1,4 @@
-package com.example.reddittop.ui.main
+package com.example.reddittop.ui.topPosts
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

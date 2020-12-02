@@ -1,4 +1,4 @@
-package com.example.reddittop.ui.main
+package com.example.reddittop.ui.topPosts.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,7 +15,10 @@ class LoadStateAdapter(private val retry: () -> Unit) : LoadStateAdapter<ReposLo
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): ReposLoadStateViewHolder {
-        return ReposLoadStateViewHolder.create(parent, retry)
+        return ReposLoadStateViewHolder.create(
+            parent,
+            retry
+        )
     }
 }
 
@@ -42,7 +45,10 @@ class ReposLoadStateViewHolder(
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.post_load_state_footer, parent, false)
             val binding = PostLoadStateFooterBinding.bind(view)
-            return ReposLoadStateViewHolder(binding, retry)
+            return ReposLoadStateViewHolder(
+                binding,
+                retry
+            )
         }
     }
 }

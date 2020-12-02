@@ -11,7 +11,7 @@
 
         <variable
             name="clickListener"
-            type="com.example.reddittop.ui.main.OnPostClickListener" />
+            type="com.example.reddittop.ui.topPosts.adapters.OnPostClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView

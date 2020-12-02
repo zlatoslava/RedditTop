@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/topPostsFragment"
-        android:name="com.example.reddittop.ui.main.TopPostsFragment"
+        android:name="com.example.reddittop.ui.topPosts.TopPostsFragment"
         android:label="Top posts Reddit"
         tools:layout="@layout/top_posts_fragment">
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/postImageFragment"
-        android:name="com.example.reddittop.ui.postimage.PostImageFragment"
+        android:name="com.example.reddittop.ui.postImage.PostImageFragment"
         android:label="Image"
         tools:layout="@layout/fragment_post_image">
         <argument
