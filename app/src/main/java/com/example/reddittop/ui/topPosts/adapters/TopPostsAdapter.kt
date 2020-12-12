@@ -2,9 +2,11 @@ package com.example.reddittop.ui.topPosts.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.reddittop.R
 import com.example.reddittop.data.model.RedditPost
 import com.example.reddittop.databinding.ListItemPostBinding
 
@@ -39,6 +41,7 @@ class TopPostsAdapter(val clickListener: OnPostClickListener) :
         getItem(position)?.let {
             holder.bind(it, clickListener)
         }
+        holder.binding.cardItem.animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_animation)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
